@@ -11,7 +11,7 @@ spécialisation Cybersécurité / Intelligence Artificielle.
 
 ## Compétences techniques
 
--Exsprit logique plus éguiqé que celui de la moyenne
+-🧠 Algorithmique et résolution de problèmes
 - 🐧 Linux & Administration système
 - 🌐 Réseaux (TCP/IP, protocoles, nmap...)
 - 🔐 Cybersécurité offensive (pentest, web security)
