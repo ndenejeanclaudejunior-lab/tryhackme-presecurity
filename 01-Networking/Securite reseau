@@ -1,0 +1,94 @@
+# 📡 Sécurité Réseau
+
+## Les types d'attaques réseau
+
+### Man in the Middle (MITM)
+L'attaquant se place entre deux machines
+pour intercepter le trafic :
+```
+Machine A ←→ Attaquant ←→ Machine B
+```
+Techniques :
+- ARP Poisoning
+- DNS Spoofing
+
+### DoS / DDoS
+Rendre un service indisponible :
+```
+DoS  → une seule machine attaque
+DDoS → des milliers de machines attaquent
+```
+
+### Port Scanning
+Découvrir les ports ouverts sur une cible :
+```bash
+nmap -sV 192.168.1.1
+```
+
+### Brute Force
+Tester des milliers de mots de passe :
+```bash
+hydra -l admin -P rockyou.txt IP ssh
+```
+
+---
+
+## Les mécanismes de défense
+
+### Pare-feu (Firewall)
+Filtre le trafic entrant et sortant :
+```
+Trafic autorisé  → passe ✅
+Trafic bloqué    → rejeté ❌
+```
+
+### IDS/IPS
+```
+IDS → détecte les intrusions (alerte)
+IPS → détecte ET bloque les intrusions
+```
+
+### VPN — Virtual Private Network
+Chiffre le trafic réseau :
+```
+Ton PC → tunnel chiffré → VPN → Internet
+```
+
+### DMZ — Zone Démilitarisée
+Zone isolée entre internet et le réseau interne :
+```
+Internet → DMZ (serveurs publics) → Réseau interne
+```
+
+---
+
+## Les protocoles de sécurité
+
+```
+SSL/TLS  → chiffrement des communications (HTTPS)
+SSH      → connexion à distance sécurisée
+IPSec    → chiffrement au niveau réseau
+WPA2/3   → sécurité WiFi
+```
+
+---
+
+## Outils de sécurité réseau
+
+```
+Wireshark  → analyser le trafic réseau
+nmap       → scanner les ports et services
+tcpdump    → capturer le trafic en ligne de commande
+netstat    → voir les connexions actives
+```
+
+---
+
+## En cybersécurité offensive
+
+```
+Reconnaissance → nmap, traceroute
+Interception   → Wireshark, ARP poisoning
+Exploitation   → Metasploit, exploits réseau
+```
+```
