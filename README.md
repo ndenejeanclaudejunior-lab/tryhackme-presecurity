@@ -27,7 +27,6 @@ spécialisation Cybersécurité / Intelligence Artificielle.
 
 ## Ce que tu trouveras ici
 
-- 📝 Writeups de machines VulnHub
 - 📚 Notes de cours (réseaux, Linux, web security)
 - 🔐 Labs PortSwigger
 - 🛠️ Scripts et outils personnels en cybersecurite et en intelligence atificielle
